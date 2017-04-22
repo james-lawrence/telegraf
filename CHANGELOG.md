@@ -39,6 +39,9 @@ for receiving and sending UDP, TCP, unix, & unix-datagram data. These plugins
 will replace udp_listener and tcp_listener, which are still available but will
 be deprecated eventually.
 
+- Postgresql plugins will now default to using a persistent connection to the database.
+if you wish you retain the previous functionality set the max_idle configuration to 0.
+
 ### Features
 
 - [#2494](https://github.com/influxdata/telegraf/pull/2494): Add interrupts input plugin.
@@ -73,7 +76,8 @@ be deprecated eventually.
 - [#2493](https://github.com/influxdata/telegraf/pull/2493): Check signature in the GitHub webhook plugin
 - [#2038](https://github.com/influxdata/telegraf/issues/2038): Add papertrail support to webhooks
 - [#2253](https://github.com/influxdata/telegraf/pull/2253): Change jolokia plugin to use bulk requests.
-- [#2575](https://github.com/influxdata/telegraf/issues/2575) Add diskio input for Darwin
+- [#2575](https://github.com/influxdata/telegraf/issues/2575): Add diskio input for Darwin
+- [#1977](https://github.com/influxdata/telegraf/issues/1977): make postgresql connection pool configurable.
 
 ### Bugfixes
 

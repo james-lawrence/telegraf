@@ -15,8 +15,12 @@ func TestPostgresqlGeneratesMetrics(t *testing.T) {
 	}
 
 	p := &Postgresql{
-		Address: fmt.Sprintf("host=%s user=postgres sslmode=disable",
-			testutil.GetLocalHost()),
+		Service: Service{
+			Address: fmt.Sprintf(
+				"host=%s user=postgres sslmode=disable",
+				testutil.GetLocalHost(),
+			),
+		},
 		Databases: []string{"postgres"},
 	}
 
@@ -113,8 +117,12 @@ func TestPostgresqlTagsMetricsWithDatabaseName(t *testing.T) {
 	}
 
 	p := &Postgresql{
-		Address: fmt.Sprintf("host=%s user=postgres sslmode=disable",
-			testutil.GetLocalHost()),
+		Service: Service{
+			Address: fmt.Sprintf(
+				"host=%s user=postgres sslmode=disable",
+				testutil.GetLocalHost(),
+			),
+		},
 		Databases: []string{"postgres"},
 	}
 
@@ -135,8 +143,12 @@ func TestPostgresqlDefaultsToAllDatabases(t *testing.T) {
 	}
 
 	p := &Postgresql{
-		Address: fmt.Sprintf("host=%s user=postgres sslmode=disable",
-			testutil.GetLocalHost()),
+		Service: Service{
+			Address: fmt.Sprintf(
+				"host=%s user=postgres sslmode=disable",
+				testutil.GetLocalHost(),
+			),
+		},
 	}
 
 	var acc testutil.Accumulator
@@ -164,8 +176,12 @@ func TestPostgresqlIgnoresUnwantedColumns(t *testing.T) {
 	}
 
 	p := &Postgresql{
-		Address: fmt.Sprintf("host=%s user=postgres sslmode=disable",
-			testutil.GetLocalHost()),
+		Service: Service{
+			Address: fmt.Sprintf(
+				"host=%s user=postgres sslmode=disable",
+				testutil.GetLocalHost(),
+			),
+		},
 	}
 
 	var acc testutil.Accumulator
@@ -184,8 +200,12 @@ func TestPostgresqlDatabaseWhitelistTest(t *testing.T) {
 	}
 
 	p := &Postgresql{
-		Address: fmt.Sprintf("host=%s user=postgres sslmode=disable",
-			testutil.GetLocalHost()),
+		Service: Service{
+			Address: fmt.Sprintf(
+				"host=%s user=postgres sslmode=disable",
+				testutil.GetLocalHost(),
+			),
+		},
 		Databases: []string{"template0"},
 	}
 
@@ -220,8 +240,12 @@ func TestPostgresqlDatabaseBlacklistTest(t *testing.T) {
 	}
 
 	p := &Postgresql{
-		Address: fmt.Sprintf("host=%s user=postgres sslmode=disable",
-			testutil.GetLocalHost()),
+		Service: Service{
+			Address: fmt.Sprintf(
+				"host=%s user=postgres sslmode=disable",
+				testutil.GetLocalHost(),
+			),
+		},
 		IgnoredDatabases: []string{"template0"},
 	}
 

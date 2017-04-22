@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/influxdata/telegraf/plugins/inputs/postgresql"
 	"github.com/influxdata/telegraf/testutil"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -15,8 +16,12 @@ func TestPostgresqlGeneratesMetrics(t *testing.T) {
 	}
 
 	p := &Postgresql{
-		Address: fmt.Sprintf("host=%s user=postgres sslmode=disable",
-			testutil.GetLocalHost()),
+		Service: postgresql.Service{
+			Address: fmt.Sprintf(
+				"host=%s user=postgres sslmode=disable",
+				testutil.GetLocalHost(),
+			),
+		},
 		Databases: []string{"postgres"},
 		Query: query{
 			{Sqlquery: "select * from pg_stat_database",
@@ -108,8 +113,12 @@ func TestPostgresqlIgnoresUnwantedColumns(t *testing.T) {
 	}
 
 	p := &Postgresql{
-		Address: fmt.Sprintf("host=%s user=postgres sslmode=disable",
-			testutil.GetLocalHost()),
+		Service: postgresql.Service{
+			Address: fmt.Sprintf(
+				"host=%s user=postgres sslmode=disable",
+				testutil.GetLocalHost(),
+			),
+		},
 	}
 
 	var acc testutil.Accumulator
